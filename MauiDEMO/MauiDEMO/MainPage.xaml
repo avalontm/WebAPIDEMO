@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiDEMO.MainPage" BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <StackLayout>
+                <Label Text="Email" HorizontalTextAlignment="Start" TextColor="Black"/>
+                <Border Padding="5,2,5,2" StrokeThickness="1" Stroke="Black" StrokeShape="RoundRectangle 5">
+                    <Entry Text="{Binding email}" TextColor="Black" Keyboard="Email" Placeholder="Email"/>
+                </Border>
+            </StackLayout>
+
+            <StackLayout>
+                <Label Text="Email" HorizontalTextAlignment="Start" TextColor="Black"/>
+                <Border Padding="5,2,5,2" StrokeThickness="1" Stroke="Black" StrokeShape="RoundRectangle 5">
+                <Entry Text="{Binding password}" TextColor="Black" IsPassword="True" Keyboard="Plain" Placeholder="Password"/>
+            </Border>
+            </StackLayout>
+            
+            <Button
+                x:Name="BtnLogin"
+                Text="Login"
+                Clicked="onLogin"
+                BackgroundColor="Black"
+                TextColor="White"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
