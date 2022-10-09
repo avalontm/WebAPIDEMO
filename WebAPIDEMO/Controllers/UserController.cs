@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PluginSQL;
 using System.Text.Json;
 using WebAPIDEMO.DataBase.Tables;
 using WebAPIDEMO.Models;
@@ -68,12 +69,32 @@ namespace WebAPIDEMO.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] JsonElement value)
         {
+
         }
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public string Delete(int id)
         {
+            ResponseModel response = new ResponseModel();
+
+            Users user = Users.Find(id);
+
+            if (user == null)
+            {
+                response.message = "No se encontro el usuario";
+                return response.ToJson();
+            }
+
+            if (!user.Delete())
+            {
+                response.message = "No se pudo eliminar el usuario";
+                return response.ToJson();
+            }
+
+            response.status = true;
+            response.message = "usaurio eliminado correctamente.";
+            return response.ToJson();
         }
     }
 }
